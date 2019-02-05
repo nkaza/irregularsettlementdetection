@@ -1,0 +1,116 @@
+{
+    "values": {
+        "inputs": {
+            "rlayer": {
+                "values": {
+                    "pos": {
+                        "values": {
+                            "y": 56.0, 
+                            "x": 174.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "param": {
+                        "values": {
+                            "isAdvanced": false, 
+                            "name": "rlayer", 
+                            "showSublayersDialog": true, 
+                            "default": null, 
+                            "value": null, 
+                            "exported": null, 
+                            "hidden": false, 
+                            "optional": false, 
+                            "description": "rLayer"
+                        }, 
+                        "class": "processing.core.parameters.ParameterRaster"
+                    }
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.ModelerParameter"
+            }
+        }, 
+        "helpContent": {}, 
+        "group": "test", 
+        "name": "touzineighborhood", 
+        "algs": {
+            "OTBEDGEEXTRACTIONTOUZI_1": {
+                "values": {
+                    "name": "OTBEDGEEXTRACTIONTOUZI_1", 
+                    "paramsFolded": true, 
+                    "outputs": {}, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 161.0, 
+                            "x": 188.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "-channel": 1.0, 
+                        "-ram": 128.0, 
+                        "-filter": 0, 
+                        "-filter.touzi.xradius": 5.0, 
+                        "-in": {
+                            "values": {
+                                "name": "rlayer"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "otb:edgeextractiontouzi", 
+                    "description": "EdgeExtraction (touzi)"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "OTBLOCALSTATISTICEXTRACTION_1": {
+                "values": {
+                    "name": "OTBLOCALSTATISTICEXTRACTION_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "-out": {
+                            "values": {
+                                "description": "D:\\informalsettlements\\banglore\\mosaics\\touziedge_50neigh.tif", 
+                                "pos": {
+                                    "values": {
+                                        "y": 306.0, 
+                                        "x": 374.0
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 261.0, 
+                            "x": 174.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "-radius": 50.0, 
+                        "-channel": 1.0, 
+                        "-ram": 128.0, 
+                        "-in": {
+                            "values": {
+                                "alg": "OTBEDGEEXTRACTIONTOUZI_1", 
+                                "output": "-out"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "otb:localstatisticextraction", 
+                    "description": "Local Statistic Extraction"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }
+        }
+    }, 
+    "class": "processing.modeler.ModelerAlgorithm.ModelerAlgorithm"
+}
