@@ -3,7 +3,14 @@
 
 This is a collection of scripts used to detect irregular settlements in Banglore in India. The main idea is to use high resolution satellite images (2m - 0.5m) and machine learning techinque such as boosted trees. Due to licensing restrictions, the input and training datasets are not provided. Please adapt the code as necessary for your own datasets.
 
-The scripts rely on R (v.3.5.1) and ENVI (5.4) + IDL (8.6)  . While R is open source and has a GPL license, ENVI + IDL is a proprietary remote sensing software. Please acquire appropriate licences before using the code.
+The scripts rely on R (v.3.5.1), Orfeo toolbox in QGIS (v 3.0) and ENVI (5.4) + IDL (8.6)  . While R and QGIS is open source and has a GPL license, ENVI + IDL is a proprietary remote sensing software. Please acquire appropriate licences before using the code.
+
+
+# Installation
+
+1. To install R see https://cran.r-project.org/doc/manuals/R-admin.html
+2. To install QGIS see https://qgis.org/en/site/forusers/download.html
+3. To install  ENVI + IDL see https://www.harrisgeospatial.com/Support/Self-Help-Tools/Help-Articles/Help-Articles-Detail/ArtMID/10220/ArticleID/15065/Install-and-License-ENVI-54-includes-IDL-86
 
 
 # Workflow
