@@ -48,17 +48,16 @@ The following indices are used in this analysis
 3. Differenial Morphological Profiles (makedmp.pro) see https://ieeexplore.ieee.org/abstract/document/6056582
 4. Different Spectral Indices such as Normalised  Built Up Index,  Normalised Vegetation Index https://www.harrisgeospatial.com/docs/NDVI.html, https://www.harrisgeospatial.com/docs/backgroundotherindices.html#WorldVie
 5. Lacunarity based on thresholding MBI and MSI (lacunarity.R) see https://doi.org/10.1111/j.1538-4632.2006.00691.x
-6. Harlick Textures (need QGIS/Orfeo Toolbox for this, texutrecalc.py). These include 
+6. Harlick Textures (need QGIS/Orfeo Toolbox for this, texutrecalc.py). These include Simple and Advanced Features.
 
-Simple Haralick Texture Features: This group of parameters defines the 8 local Haralick texture feature output image. The image channels are: Energy, Entropy, Correlation, Inverse Difference Moment, Inertia, Cluster Shade, Cluster Prominence and Haralick Correlation.
+  * Simple Haralick Texture Features: This group of parameters defines the 8 local Haralick texture feature output image. The image channels are: Energy, Entropy, Correlation, Inverse Difference Moment, Inertia, Cluster Shade, Cluster Prominence and Haralick Correlation.
 
-Advanced Texture Features: This group of parameters defines the 10 advanced texture feature output image. The image channels are: Mean, Variance, Dissimilarity, Sum Average, Sum Variance, Sum Entropy, Difference of Entropies, Difference of Variances, IC1 and IC2.
+  * Advanced Texture Features: This group of parameters defines the 10 advanced texture feature output image. The image channels are: Mean, Variance, Dissimilarity, Sum Average, Sum Variance, Sum Entropy, Difference of Entropies, Difference of Variances, IC1 and IC2.
 
-see https://www.orfeo-toolbox.org/CookBook/Applications/app_HaralickTextureExtraction.html
+   see https://www.orfeo-toolbox.org/CookBook/Applications/app_HaralickTextureExtraction.html
 
 7. Building size indices based on thresholding MBI (localLmetrics.R) see https://rdrr.io/github/r-spatialecology/landscapemetrics/f/README.md
-
-These indices include 
+   * These indices include number of patches, mean patch size, standard deviation of size etc.
 
 8. Number of Edges (cannyedger.pro/cannybatch.pro) see https://en.wikipedia.org/wiki/Canny_edge_detector
 
