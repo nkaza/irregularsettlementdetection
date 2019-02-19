@@ -23,13 +23,15 @@ PRO MBICalc
   batchfiles = FILE_SEARCH('D:\informalsettlements\banglore\Road Sections to Clip\MUL\', '*.tif')
   
 
-
+; Note the zero-indexing.
 
   foreach file, batchfiles[0:n_elements(batchfiles)-1] do begin
   ;foreach file, batchfiles[31] do begin
     mul_imgfile  = envi.OpenRaster(file)
     
-    
+; Radiometric Calibration
+
+
     file_delete, 'C:\scratch\blore\', /RECURSIVE,  /ALLOW_NONEXISTENT, /QUIET
    if (~ FILE_TEST('C:\scratch\blore\', /DIRECTORY)) then FILE_MKDIR, 'C:\scratch\blore\'
     CD, 'C:\scratch\blore\'
@@ -58,7 +60,8 @@ PRO MBICalc
     radioTask.execute
     
 
-    
+; Create Spectral Indices
+
     spectraltask = ENVITask('SpectralIndices')
     spectraltask.Input_Raster = radioTask.Output_raster
     spectralTask.INDEX = ['Normalized Difference Vegetation Index','WorldView Built-Up Index']
@@ -113,7 +116,7 @@ PRO MBICalc
     Spectraltask.Output_raster.close
     
     
-    
+ ; initialise files for 0,90,45 and 135 structural elements.
     
     horizfid = [rgbmax_fid]
     vertfid = [rgbmax_fid]
@@ -123,6 +126,8 @@ PRO MBICalc
   
 
     ; Perform convolution/morphological filtering
+    ; 2-50 by 5 is the size range for the structural element.
+
   for I = 2,50,5 do begin 
    envi_doit, 'morph_doit', FID=rgbmax_fid, DIMS=rgbmax_dims, POS=Lindgen(rgbmax_nb), $
       OUT_BNAME='Open ('+rgbmax_bnames+')', $
@@ -148,7 +153,8 @@ PRO MBICalc
     
     numfiles = diagfid.length
 
-    
+    ;; Differential Morphological Profiles.
+
     dmphorizfid = []
     dmpvertfid = []
     dmprotdiagfid = []
@@ -167,11 +173,15 @@ PRO MBICalc
    endfor
    
    fidarray = [dmphorizfid, dmpvertfid, dmprotdiagfid, dmpdiagfid]
+
+   ;; Export data
    
   envi_doit, 'cf_doit', DIMS=rgbmax_dims, FID=fidarray, POS= FLTARR(fidarray.LENGTH), out_name='dmp_cf', R_FID=dmp_fid, /INVISIBLE
   ENVI_File_Query, dmp_fid, DIMS=dims, NB=nb
   
   CD, 'D:\informalsettlements\banglore\MBI
+
+  ;; Sum data.
   
   ENVI_Doit, 'ENVI_Sum_Data_Doit',  DIMS = dims, FID = dmp_fid, POS = Lindgen(nb), COMPUTE_FLAG = [0,0,1,0,0,0,0,0], OUT_DT = 4, OUT_BNAME = ['Mean'], OUT_NAME = strcompress(File_basename(file, ".tif")+'_mbi_avg', /REMOVE_ALL), R_FID=mbi_fid, /INVISIBLE
   
@@ -182,6 +192,8 @@ PRO MBICalc
 ;  img.close
   
   close, /all
+
+  ;; Cleanup
   
   ;filestoremove = [file_search('C:\scratch\blore\', 'Horizon*'), file_search('C:\scratch\blore', 'Vert*'), file_search('C:\scratch\blore\', 'Rotdiag*'),file_search('C:\scratch\blore\', 'diag*'), file_search('C:\scratch\blore\', 'th*'), file_search('C:\scratch\blore\', 'dmp*')]
   ;file_delete, filestoremove, /ALLOW_NONEXISTENT

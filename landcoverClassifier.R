@@ -11,6 +11,9 @@ library(magrittr)
 
 
 #### functions ###
+
+### Create a stratified sample of training data.
+
 strat_sample <- function(data, gr_variab, tr_percent, thresh_test = 0, seed) {
   
   stopifnot(tr_percent > 0 & tr_percent < 1)
@@ -45,6 +48,8 @@ strat_sample <- function(data, gr_variab, tr_percent, thresh_test = 0, seed) {
   
 }
 
+# Classify into trainign and test.
+
 extract_set <- function(data, whichSET) {
   
   stopifnot(is.element(whichSET, c("Train", "Test")))
@@ -65,13 +70,20 @@ extract_set <- function(data, whichSET) {
 
 
 setwd("D:\\Google Drive\\Bangalore Project\\Training Data")
+
+## Raster to be classified.
+
 r <- brick('stacked')
 
 names(r) <- c('Coastal', 'Blue', 'Green', 'Yellow', 'Red', 'RedEdge', 'NIR1', 'NIR2', 'MBI', 'NDBSI', 'NDVI', 'NDWI')
 
+## Vector training datasset with Category as a the land use class
+
 trainData <- readOGR('D:\\Google Drive\\Bangalore Project\\Training Data\\classification_featuredata.shp', layer='classification_featuredata')
 trainData$Class <- trainData$Category
 responseCol <- 'Class'
+
+# Extract the raster values that fall under the polygons.
 
 dfAll = data.frame(matrix(vector(), nrow = 0, ncol = length(names(r)) + 1))   
 for (i in 1:length(unique(trainData[[responseCol]]))){                          
@@ -90,16 +102,20 @@ rm(dataSet)
 rm(categorymap)
 
 
+## Set minimum number of training rows to 100., 
 
 groups <- strat_sample(dfAll, "class", .75, thresh_test = 1000)
 with(groups, prop.table(table(class, SET), 1))
 
+## Split to Train and Test samples.
 sdfAll_train <- extract_set(groups, "Train")
 sdfAll_test <- extract_set(groups, "Test")
 rm(dfAll)
 
 
 set.seed(20)
+
+# The following trains the gradient boosted tree algorithm and predicts the classes for each pixel.
 
 control <- trainControl(method="repeatedcv", number=10, repeats=3)
 

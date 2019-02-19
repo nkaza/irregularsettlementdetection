@@ -9,6 +9,9 @@ library(doParallel)
 
 setwd("D:\\informalsettlements\\banglore\\mosaics")
 
+
+######## Assembling the data layers ##########################
+
 #### This one only works with bricks, not single layer rasters
 r1 <- raster('lac_agg.tif')
 names(r1) <- 'buildinglacunarity'
@@ -23,32 +26,34 @@ r5 <- aggregate(rcanny, fact=50, fun=sum, na.rm=T)
 names(r5) <- 'numedges'
 
 
-#rharalick <- brick('haralick3_mosaic.tif')
+rharalick <- brick('haralick3_mosaic.tif')
 
-#r7 <- clusterR(rharalick, raster::aggregate, args = list(fact=50, fun=median, na.rm=T))
-#r7 <- aggregate(rharalick, fact=50, fun=median, na.rm=T, file="haralick3_agg100_med.tif")
+r7 <- clusterR(rharalick, raster::aggregate, args = list(fact=50, fun=median, na.rm=T))
+r7 <- aggregate(rharalick, fact=50, fun=median, na.rm=T, file="haralick3_agg100_med.tif")
 
 
-r7 <- brick('haralick3_agg100.tif')
-names(r7) <- paste0('haralick', 1:10, sep="")
+#r7 <- brick('haralick3_agg100.tif')
+#names(r7) <- paste0('haralick', 1:10, sep="")
 
-#r8 <- raster('mbi_pantex.tif')
-#r8 <- aggregate(r8, fact=50, fun=mean, na.rm=T)
+r8 <- raster('mbi_pantex.tif')
+r8 <- aggregate(r8, fact=50, fun=mean, na.rm=T)
 
-#r9 <- raster('mbi_mosaic.tif')
-#r9 <- aggregate(r9, fact=50, fun=sd, na.rm=T)
-#names(r9) <- 'mbi_sd'
+r9 <- raster('mbi_mosaic.tif')
+r9 <- aggregate(r9, fact=50, fun=sd, na.rm=T)
+names(r9) <- 'mbi_sd'
 
-#r10 <- raster('ndvi_wbi')
-#r10 <- aggregate(r10>0.4, fact=50, fun=sum, na.rm=T)
+r10 <- raster('ndvi_wbi')
+r10 <- aggregate(r10>0.4, fact=50, fun=sum, na.rm=T)
 #writeRaster(r10, filename = 'ndvi_wbi_100m.tif')
-#r10 <- brick('ndvi_wbi_100m.tif')
-#r11 <- raster('ndvi_agg.tif')
+
+r10 <- brick('ndvi_wbi_100m.tif')
+r11 <- raster('ndvi_agg.tif')
 
 #resample(r10, r1, method='ngb', filename="ndvi_wbi_100m_v2.tif", overwrite=T)
 #resample(r11, r1, method='ngb', filename="ndvi_agg_v2.tif", overwrite=T)
 #r10 <- brick("ndvi_wbi_100m_v2.tif")
 #names(r10) <- c('ndvimean', 'wbimean')
+
 #r12 <- calc(r10, function(x){x[,1]-x[,2]})
 r11 <- raster('ndvi_agg_v2.tif')
 names(r11) <- 'vegetationspacing'
@@ -78,8 +83,13 @@ names(r16) <- paste0("MS_", c('coastal', 'blue', 'green', 'yellow', 'red', 'rede
 
 r <- brick(r1,r3,r5,r7[[10]],r11,r12, r13, r15, r16)
 
-#names(r) <- c('lacunarity', 'sdpatchsize', 'sdethetavar', 'numberpatch', 'edgeDens', 'edgeskew',, )
+################## Finish assembling the Raster Brick ##############
+
+
 #trainData <- readOGR('/Users/nikhilkaza/Desktop/trainingbuff2.shp', layer='trainingbuff2')
+
+# Read in the training data (Vector files)and set Class as the classification variable name.
+
 trainValidateData <- readOGR('D:\\Google Drive\\Bangalore Project\\Training Data\\September_trainingData\\mansi_trainingdataseptember2017_trainValidate.shp', layer='mansi_trainingdataseptember2017_trainValidate')
 trainValidateData$Class <- as.factor(paste(trainValidateData$CaseID, trainValidateData$Category, sep="_"))
 
@@ -88,6 +98,9 @@ validationData <- trainValidateData[trainValidateData$trainORval=='validate',]
 
 
 responseCol <- 'Class'
+
+
+#### Set up the training data and split it to training, testing and validation datasets.
 
 TrdfAll = data.frame(matrix(vector(), nrow = 0, ncol = length(names(r)) + 1))   
 ValdfAll = data.frame(matrix(vector(), nrow = 0, ncol = length(names(r)) + 1))   
@@ -117,8 +130,13 @@ TrdfAll <- TrdfAll[complete.cases(TrdfAll),]
 #nsamples <- 300
 #sdfAll <- subset(dfAll[sample(1:nrow(dfAll), nsamples), ])
 control <- trainControl(method="repeatedcv", number=10, repeats=3, savePredictions='final', classProbs=TRUE)
-algorithmList <- c('xgbTree', 'svmRadial')
+algorithmList <- c('xgbTree', 'svmRadial') # Use other if necessary.
 
+
+########
+
+
+#### Train the models
 
 nThreads <- detectCores(logical = TRUE)
 cl <- makeCluster(nThreads-1)
@@ -137,6 +155,10 @@ dotplot(results)
 modelCor(results)
 splom(results)
 
+######
+
+#### Blend models together ####
+
 stackControl <- trainControl(method="repeatedcv", number=10, repeats=3, savePredictions=TRUE, classProbs=TRUE)
 set.seed(30)
 stack.glm <- caretStack(models, method="glm", metric="Accuracy", trControl=stackControl)
@@ -145,7 +167,7 @@ print(stack.glm)
 stopCluster(cl)
 registerDoSEQ()
 
-
+#### Predict using blended model or a single model.
 
 beginCluster()
 predrast <- clusterR(r, raster::predict, args = list(model = modFit, type="prob"))

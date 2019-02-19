@@ -1,11 +1,14 @@
 library(raster)
 library(SDMTools)
 
+# SDMTools is not maintained anymore. Please switch over to landscapemetrics https://github.com/r-spatialecology/landscapemetrics
+
+# initialise rasters
 r <- raster("D:\\informalsettlements\\banglore\\mosaics\\mbi_mosaic.tif")
-#r <- raster('/Users/nikhilkaza/Dropbox/India_GISdata/blore/test_mbi.tif')
+r <- r>20 # Create a building object raster by thresholding the rasters
 
-r <- r>20
 
+# Different functions for landscape metrics.
 
 localLmetrics.npatches<- function(y, wsize=50,...){
   if(sum(y, na.rm=T) >0){
@@ -34,6 +37,8 @@ localLmetrics.maxarea<- function(y, wsize=50,...){
     ClassStat(r2, bkgd=0, cellsize = 2)$max.patch.area
   } else NA
 }
+
+# Different aggregation functions for 1 ha rasters
 
 aggregate(r, fact=50, fun=localLmetrics.npatches, filename='D:\\informalsettlements\\banglore\\mosaics\\numberbuildings.tif', overwrite=T)
 aggregate(r, fact=50, fun=localLmetrics.meanarea, filename='D:\\informalsettlements\\banglore\\mosaics\\meanbuildingsize.tif', overwrite=T)

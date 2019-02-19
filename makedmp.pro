@@ -1,3 +1,5 @@
+;;; This file is not necessary and the code is folded into MBIcalc.pro.
+
 PRO makedmp
   compile_opt idl2
   on_error, 2
