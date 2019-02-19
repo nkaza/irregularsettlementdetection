@@ -1,0 +1,285 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"para",
+				"HTML: Encode Special Characters"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/kaza/Documents/GitHub/irregularsettlementdetection"
+	],
+	"file_history":
+	[
+		"/Users/kaza/Dropbox/Apps/Overleaf/Community detection in Commuting networks/latex_preamble.tex",
+		"/Users/kaza/Dropbox/Apps/Overleaf/Community detection in Commuting networks/main.tex",
+		"/Users/kaza/Downloads/abstract_bike.tex",
+		"/Users/kaza/Dropbox/cv/cv.tex",
+		"/Users/kaza/Dropbox/cv/publications.tex",
+		"/Users/kaza/Library/Application Support/Sublime Text 3/Packages/User/latex.sublime-build",
+		"/Users/kaza/Dropbox/urban_analysis_tutorials/slides/MachineLearning/nkaza-pres.css",
+		"/Users/kaza/Dropbox/Public/master.bib",
+		"/Users/kaza/Dropbox/coursematerials/fall18/PLAN547/syllabus_PLAN547.tex",
+		"/Users/kaza/Dropbox/website/content/teaching/Techniques_short.Rmd",
+		"/Users/kaza/Dropbox/website/content/post/2018-07-26-introduction-to-r-exploratory-data-visualisation.Rmd",
+		"/Users/kaza/Dropbox/website/content/post/2018-07-09-point-pattern-analysis-and-cluster-detection.Rmd",
+		"/Users/kaza/Dropbox/website/content/post/2018-07-22-land-suitability-analysis.Rmd",
+		"/Users/kaza/Dropbox/website/content/post/2018-06-30-using-blogdown-and-github.Rmd",
+		"/Users/kaza/Dropbox/website/content/post/2018-07-01-urban-morphology-landscape-metrics.Rmd",
+		"/Users/kaza/Dropbox/website/content/post/2018-07-04-identifying-employment-centers.Rmd",
+		"/Users/kaza/Dropbox/website/content/post/2018-07-08-spatial-regression-discontinuity-design-setup.Rmd",
+		"/Users/kaza/Dropbox/website/layouts/partials/addthis-script.html",
+		"/Users/kaza/Dropbox/website/layouts/partials/addthis.html",
+		"/Users/kaza/Dropbox/website/themes/hugo-academic/layouts/partials/talk_li_detailed.html",
+		"/Users/kaza/Dropbox/website/content/publication/kaza_changing_2013.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2012zr.md",
+		"/Users/kaza/Dropbox/website/content/publication/Brookshire:2013bs.md",
+		"/Users/kaza/Dropbox/website/config.toml",
+		"/Users/kaza/Dropbox/website/content/publication/kazaetal2018whoseplan.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2011dq.md",
+		"/Users/kaza/Dropbox/website/content/publication/LI:2017.md",
+		"/Users/kaza/Dropbox/website/themes/hugo-academic/layouts/partials/post_li_detailed.html",
+		"/Users/kaza/Dropbox/website/themes/hugo-academic/layouts/partials/share.html",
+		"/Users/kaza/Dropbox/website/public/post/index.html",
+		"/Users/kaza/Dropbox/website/content/project/energy-policy.md",
+		"/Users/kaza/Dropbox/website/themes/hugo-academic/layouts/partials/navbar.html",
+		"/Users/kaza/Dropbox/website/content/search.md",
+		"/Users/kaza/Dropbox/website/static/js/search.js",
+		"/Users/kaza/Dropbox/website/themes/hugo-academic/layouts/_default/index.json",
+		"/Users/kaza/Dropbox/website/content/project/urban-change.md",
+		"/Users/kaza/Dropbox/website/layouts/_default/index.json",
+		"/Users/kaza/Dropbox/website/themes/hugo-academic/layouts/_default/search.html",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2010lr.md",
+		"/Users/kaza/Dropbox/website/content/publication/Lester:wp:jo.md",
+		"/Users/kaza/Dropbox/website/content/publication/Zapata:dz.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2013kx.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2013tg.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2013uq.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:HPD:2016.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:Magpie_India.md",
+		"/Users/kaza/Dropbox/website/content/publication/kaza:vainforesight.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:wp:yo.md",
+		"/Users/kaza/Dropbox/website/content/home/tags.md",
+		"/Users/kaza/Dropbox/website/content/home/publications.md",
+		"/Users/kaza/Dropbox/website/content/project/irregular-settlements.md",
+		"/Users/kaza/Dropbox/website/content/home/publications_selected.md",
+		"/Users/kaza/Dropbox/website/content/home/workingpapers.md",
+		"/Users/kaza/Dropbox/website/content/home/posts.md",
+		"/Users/kaza/Dropbox/website/content/publication/BenDor:2028vn.md",
+		"/Users/kaza/Dropbox/website/content/home/projects.md",
+		"/Users/kaza/Dropbox/website/content/publication/Qiu:2017jk.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:EDQ.md",
+		"/Users/kaza/Dropbox/website/content/publication/Zapata:ay.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:TDA.md",
+		"/Users/kaza/Dropbox/website/content/publication/kaza_knaap_2011.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2006oq.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2013fv.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2011qf.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2013fk.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2009fk.md",
+		"/Users/kaza/Dropbox/website/content/publication/Chakraborty:2011lr.md",
+		"/Users/kaza/Dropbox/website/content/publication/Kaza:2009nx.md",
+		"/Users/kaza/Dropbox/website/content/publication/hopkins_representing_2005.md",
+		"/Users/kaza/Dropbox/website/content/publication/BenDor:dw.md",
+		"/Users/kaza/Dropbox/website/content/talk/example-talk.md",
+		"/Users/kaza/Downloads/apreshill-3ffa0ec8ce03321aa0731ec18e661c2383eaac7d/config.toml",
+		"/Users/kaza/Dropbox/website/themes/hugo-academic/i18n/en.yaml",
+		"/Users/kaza/web/nkaza-web/_config.yml"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 108.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "irregularsettlementdetection.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 415.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
