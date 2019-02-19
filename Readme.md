@@ -3,7 +3,7 @@
 
 This is a collection of scripts used to detect irregular settlements in Banglore in India. The main idea is to use high resolution satellite images (2m - 0.5m) and machine learning techinque such as boosted trees. Due to licensing restrictions, the input and training datasets are not provided. Please adapt the code as necessary for your own datasets.
 
-The scripts rely on R and ENVI + IDL . While R is open source and has a GPL license, ENVI + IDL is a proprietary remote sensing software. Please acquire appropriate licences before using the code.
+The scripts rely on R (v.3.5.1) and ENVI (5.4) + IDL (8.6)  . While R is open source and has a GPL license, ENVI + IDL is a proprietary remote sensing software. Please acquire appropriate licences before using the code.
 
 
 # Workflow

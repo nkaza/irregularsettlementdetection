@@ -2,6 +2,8 @@ PRO cannyBATCH
   COMPILE_OPT IDL2
   ; Start the application
   e = ENVI(/HEADLESS)
+
+  ;;; The script uses CANNY function from ENVI See https://www.harrisgeospatial.com/docs/CANNY.html
   
   CD, 'D:\informalsettlements\banglore\MBI'
   batchfiles = FILE_SEARCH('D:\informalsettlements\banglore\MBI', '*.hdr')
